@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Info</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <form class="search-bar" action="/processar" method="POST">
+            <input name="search-bar" type="text" placeholder="Enter city" id="city-input">
+            <button id="search-btn">Search</button>
+        </form>
+        <div class="weather-info">
+            <div class="city">City:
+                <span id="city-name">
+                    {% if city == 0 %}
+                    N/A
+                    {% else %}
+                    {{ city.cidade }}
+                    {% endif %}
+                </span>
+            </div>
+            <div class="temperature">Temperature:
+                <span id="temperature">
+                    {% if city == 0 %}
+                    N/A
+                    {% else %}
+                    {{ city.temperatura }}Cº
+                    {% endif %}
+                </span>
+            </div>
+            <div class="climate">Climate:
+                <span id="climate">
+                    {% if city == 0 %}
+                    N/A
+                    {% else %}
+                    {{ city.clima }}
+                    {% endif %}
+                </span>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
